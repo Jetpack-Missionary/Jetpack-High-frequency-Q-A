@@ -1,5 +1,3 @@
-# Jetpack-High-frequency-Q&A
-
 很高兴见到你！
 
 作为 [《重学安卓》](https://xiaozhuanlan.com/kunminx)专栏配套项目的 [《Jetpack MVVM 最佳实践》](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice) ，于 2019.10.30 上线并长期维护。
@@ -8,9 +6,11 @@
 
 考虑到这些四处分散的 Q&A 不便于新上手的小伙伴查阅，因此单独准备了本项目，点开项目就能直接从 Readme 中查看到不定期整理和更新的高频 Q&A。
 
-
+&nbsp;
 
 ## 《重学安卓》读者群 高频 Q&A TOP 5
+
+&nbsp;
 
 #### TOP 1：Jetpack MVVM 下的页面通信怎么做？
 
@@ -25,7 +25,7 @@
 
 具体可见《最佳实践》项目中对 SharedViewModel 的使用。
 
-
+&nbsp;
 
 #### TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？
 
@@ -39,7 +39,7 @@
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![WechatIMG164.jpeg](https://i.loli.net/2020/06/12/TJpv89LwYVegd4O.jpg) | ![1921591637865_.pic_hd.jpg](https://i.loli.net/2020/06/12/ACIjucp2SMbzOv6.jpg) | ![1911591637864_.pic_hd.jpg](https://i.loli.net/2020/06/12/WijX7JA3kqKP1Fn.jpg) |
 
-
+&nbsp;
 
 #### TOP 3：逻辑为什么不在 ViewModel 中写？
 
@@ -71,7 +71,7 @@ ViewModel 作为 视图控制器 和 数据层 沟通的桥梁，其自身应保
 
 ![WX20200612-143224@2x.png](https://i.loli.net/2020/06/12/G6BUshkH5m9uJyZ.png)
 
-
+&nbsp;
 
 #### TOP 4：为什么不用 LiveDataBus？
 
@@ -85,7 +85,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 与此同时，尽可能使用 单例或全局 ViewModel 来托管 liveData，这样调试时能根据内存中的 liveData 对象找到事件源。LiveDataBus 这种通过 tag 来标记的，难以找到。
 
-
+&nbsp;
 
 #### TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？
 
@@ -93,11 +93,11 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 具体操作和注意事项可参考 [《就算不用 Jetpack Navigation，也请务必领略的声明式编程之美！》](https://xiaozhuanlan.com/topic/5860149732) 文末的详细补充，以及我和 [Flywith24](https://github.com/Flywith24) 在 [《我的碎片很听话，你的 Fragment 有自己的想法》](https://xiaozhuanlan.com/topic/0937256481) 评论区 22 楼关于 replace 方式返回时视图状态恢复的讨论。
 
-
+&nbsp;
 
 ## Jetpack MVVM 最佳实践 issue 高频 Q&A TOP 5：
 
-
+&nbsp;
 
 #### TOP 1：页面 onPause 的时候，不是不该收到消息吗？
 
@@ -111,7 +111,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 ![WechatIMG3901.jpeg](https://i.loli.net/2020/02/27/zZ1VgmkWTQEqbUO.jpg) 
 
-
+&nbsp;
 
 #### TOP 2：《最佳实践》项目中的 ”DataBinding” 严格模式是怎么回事？
 
@@ -119,7 +119,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 关于 “数据驱动” 的本质，可详见 [《从 被误解 到 真香 的 Jetpack DataBinding！》](https://xiaozhuanlan.com/topic/9816742350) 和 [《是 事关软件工程安全 的 数据驱动 UI 框架 上车指南》](https://xiaozhuanlan.com/topic/2356748910) 中全网独家提供的深度解析。
 
-
+&nbsp;
 
 #### TOP 3：为什么 MainActivityViewModel 中使用 LiveData 绑定视图状态，而其他 State-ViewModel 使用 ObservableField？
 
@@ -132,7 +132,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 更多细节内容详见 [《从 被误解 到 真香 的 Jetpack DataBinding！》](https://xiaozhuanlan.com/topic/9816742350) 文末及评论区中的补充。
 
-
+&nbsp;
 
 #### TOP 4：LiveData observe 回调走了多次，该如何处理？
 
@@ -146,9 +146,19 @@ LiveData 是被设计为，支持从 ViewModel、单例等唯一可信源 完成
 
 更多完整的提示可参见 [《LiveData 鲜为人知的 身世背景 和 独特使命》](https://xiaozhuanlan.com/topic/0168753249) 文末的最新补充。
 
-
+&nbsp;
 
 #### TOP 5：将《最佳实践》的 Navigation 修改版引入到自己项目，结果还是走的 replace，怎么办？
 
 解答：请移除自己项目中引入的 navigation.fragment gradle 引用，不然可能会覆盖来自 architecture module 下的那些。
 并且，请确保 navigation.fragment 被移入自己项目时，和原来 architecture module 中一样，使用完整的 com.androidX 的包名路径。
+
+&nbsp;
+
+## 版权声明
+
+本文以 [CC 署名-非商业性使用-禁止演绎 4.0 国际协议](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh) 发行。
+
+Copyright © 2019-present KunMinX
+
+![](https://user-gold-cdn.xitu.io/2020/5/22/1723c10d41f87699?w=88&h=31&f=png&s=1566)
