@@ -8,7 +8,7 @@
 
 考虑到这些四处分散的 Q&A 不便于新上手的小伙伴查阅，因此单独准备了本项目，点开项目就能直接从 Readme 中查看到不定期整理和更新的高频 Q&A。
 
-（在认真阅读过《最佳实践》源码和《重学安卓》专栏文章后，在实际项目开发中对 Jetpack MVVM 有任何疑问，可在本项目或 [《最佳实践》项目的 issue 区](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice/issues) 提交 issue）
+（在实际项目开发中对 Jetpack MVVM 有任何疑问，可先自助查阅 持续维护并趋于成熟的《最佳实践》源码和《重学安卓》专栏文章，遇到实在不理解的困惑可在群里讨论，或在文章评论区、本项目或 [《最佳实践》项目的 issue 区](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice/issues) 提交 issue）
 
 &nbsp;
 
