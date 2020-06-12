@@ -12,6 +12,24 @@
 
 &nbsp;
 
+## 目录一览
+
+- 《重学安卓》读者群 高频 Q&A TOP 5
+  - TOP 1：Jetpack MVVM 下的页面通信怎么做？
+  - TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？
+  - TOP 3：逻辑为什么不在 ViewModel 中写？
+  - TOP 4：为什么不用 LiveDataBus？
+  - TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？
+- Jetpack MVVM 最佳实践 issue 高频 Q&A TOP 5
+  - TOP 1：页面 onPause 的时候，不是不该收到消息吗？
+  - TOP 2：《最佳实践》项目中的 ”DataBinding” 严格模式是怎么回事？
+  - TOP 3：绑定视图状态，LiveData 和 ObservableField，怎么取舍？
+  - TOP 4：LiveData observe 回调走了多次，该如何处理？
+  - TOP 5：将《最佳实践》的 Navigation 修改版引入到自己项目，结果还是走的 replace，怎么办？
+- To Be Continue ..
+
+&nbsp;
+
 ## 《重学安卓》读者群 高频 Q&A TOP 5
 
 &nbsp;
