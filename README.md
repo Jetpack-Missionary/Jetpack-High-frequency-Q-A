@@ -1,3 +1,5 @@
+# Jetpack-High-frequency-Q&A
+
 很高兴见到你！
 
 作为 [《重学安卓》](https://xiaozhuanlan.com/kunminx)专栏配套项目的 [《Jetpack MVVM 最佳实践》](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice) ，于 2019.10.30 上线并长期维护。
@@ -12,7 +14,7 @@
 
 &nbsp;
 
-#### TOP 1：Jetpack MVVM 下的页面通信怎么做？
+### TOP 1：Jetpack MVVM 下的页面通信怎么做？
 
 解答：通过 SharedViewModel 来完成。
 
@@ -27,7 +29,7 @@
 
 &nbsp;
 
-#### TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？
+### TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？
 
 解答：“数据倒灌” 现象是我全网首创的对某类现象的概括，所以网上大概搜不到这类描述。
 
@@ -41,7 +43,7 @@
 
 &nbsp;
 
-#### TOP 3：逻辑为什么不在 ViewModel 中写？
+### TOP 3：逻辑为什么不在 ViewModel 中写？
 
 解答：Jetpack MVVM 主要遵循 **数据驱动** 和 **关注点分离** 这两大特性，
 
@@ -73,7 +75,7 @@ ViewModel 作为 视图控制器 和 数据层 沟通的桥梁，其自身应保
 
 &nbsp;
 
-#### TOP 4：为什么不用 LiveDataBus？
+### TOP 4：为什么不用 LiveDataBus？
 
 解答：原因同上。
 
@@ -87,7 +89,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 &nbsp;
 
-#### TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？
+### TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？
 
 解答：Navigation 的 FragmentNavigator，官方写法是通过 replace 来启动新 Fragment，这可能造成返回时重绘页面等问题，对此有两种办法，一种是重写 FragmentNavigator，使之通过 show hide 来启动新 Fragment，另一种是在 onCreateView 中复用上一次实例化好的 View。
 
@@ -99,7 +101,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 &nbsp;
 
-#### TOP 1：页面 onPause 的时候，不是不该收到消息吗？
+### TOP 1：页面 onPause 的时候，不是不该收到消息吗？
 
 解答：看到网上有不少 以讹传讹的网文 传播 “页面 onPause 时不会收到 LiveData 通知” 等不实观点，给读者们徒添困扰、耽误大量时间，特此辟谣：
 
@@ -113,7 +115,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 &nbsp;
 
-#### TOP 2：《最佳实践》项目中的 ”DataBinding” 严格模式是怎么回事？
+### TOP 2：《最佳实践》项目中的 ”DataBinding” 严格模式是怎么回事？
 
 解答：“严格模式” 是我基于对 “数据驱动” 的本质的理解，而全网首创的 软件工程安全的 “纯粹数据驱动” 的写法。换言之，只要遵循 “严格模式”，就可以确保 **100% 解决视图调用的一致性问题**（安全性等价于基于函数式编程思想的 Jetpack Compose），避免在多布局等背景下滋生的各种 null 安全情况的发生。
 
@@ -121,7 +123,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 &nbsp;
 
-#### TOP 3：为什么 MainActivityViewModel 中使用 LiveData 绑定视图状态，而其他 State-ViewModel 使用 ObservableField？
+### TOP 3：为什么 MainActivityViewModel 中使用 LiveData 绑定视图状态，而其他 State-ViewModel 使用 ObservableField？
 
 解答：**ObservaleField 有防抖的特点**，要记住这个特点，然后根据情况选择使用。
 
@@ -134,7 +136,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 &nbsp;
 
-#### TOP 4：LiveData observe 回调走了多次，该如何处理？
+### TOP 4：LiveData observe 回调走了多次，该如何处理？
 
 解答：（注意此处所指的情况不同于 ”数据倒灌“）
 
@@ -148,7 +150,7 @@ LiveData 是被设计为，支持从 ViewModel、单例等唯一可信源 完成
 
 &nbsp;
 
-#### TOP 5：将《最佳实践》的 Navigation 修改版引入到自己项目，结果还是走的 replace，怎么办？
+### TOP 5：将《最佳实践》的 Navigation 修改版引入到自己项目，结果还是走的 replace，怎么办？
 
 解答：请移除自己项目中引入的 navigation.fragment gradle 引用，不然可能会覆盖来自 architecture module 下的那些。
 并且，请确保 navigation.fragment 被移入自己项目时，和原来 architecture module 中一样，使用完整的 com.androidX 的包名路径。
