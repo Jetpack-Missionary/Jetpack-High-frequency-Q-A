@@ -15,7 +15,7 @@
 ## 目录一览
 
 - 《重学安卓》读者群 高频 Q&A TOP 5
-  - TOP 1：Jetpack MVVM 下的页面通信怎么做？
+  - TOP 1：<a href="#cxaztop1">TOP 1：Jetpack MVVM 下的页面通信怎么做？</a>
   - TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？
   - TOP 3：逻辑为什么不在 ViewModel 中写？
   - TOP 4：为什么不用 LiveDataBus？
@@ -34,7 +34,7 @@
 
 &nbsp;
 
-### TOP 1：Jetpack MVVM 下的页面通信怎么做？
+<p id="cxaztop1">### TOP 1：Jetpack MVVM 下的页面通信怎么做？</p>
 
 解答：通过 SharedViewModel 来完成。
 
