@@ -53,7 +53,7 @@
 
 解答：“数据倒灌” 现象是我全网首创的对某类现象的概括，所以网上大概搜不到这类描述。
 
-数据倒灌是 **专指** 在 页面通信（事件回调）的场景下，通过 SharedViewModel 的 LiveDate 给当前页通知过一次，并返回上一页，下次再进入当前页时重复收到推送的情况。
+数据倒灌是 **专指** 在 页面通信（事件回调）的场景下，通过 SharedViewModel 的 LiveData 给当前页通知过一次，并返回上一页，下次再进入当前页时重复收到推送的情况。
 
 目前[《最佳实践》](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)项目中通过 EventLiveData 解决了这类问题，具体可查看最新源码。
 
