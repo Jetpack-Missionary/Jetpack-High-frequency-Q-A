@@ -131,7 +131,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 具体缘由详见专栏 [《为你还原一个真实的 Jetpack Lifecycle》](https://xiaozhuanlan.com/topic/3684721950) 文末 最新补充
 
-![WechatIMG3901.jpeg](https://i.loli.net/2020/02/27/zZ1VgmkWTQEqbUO.jpg) 
+![WX20200616-135050@2x.png](https://i.loli.net/2020/06/16/mlMECZBVFKgdcpw.png)
 
 &nbsp;
 
