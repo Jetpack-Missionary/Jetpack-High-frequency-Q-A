@@ -1,3 +1,5 @@
+如 GitHub 看不见图片，请自行按照网上的方法通过修改 hosts 修复，或访问掘金同步维护的[《独家记忆 | Jetpack MVVM 高频提问和解答》](https://juejin.im/post/5ef061d0e51d4573e71f3243)
+
 很高兴见到你！
 
 作为[《重学安卓》](https://xiaozhuanlan.com/kunminx)专栏配套项目的[《Jetpack MVVM 最佳实践》](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)，于 2019.10.30 上线并长期维护。
@@ -17,7 +19,7 @@
 - 《重学安卓》读者群 高频 Q&A TOP 5
   - <a href="#cxaztop1">TOP 1：Jetpack MVVM 下的页面通信怎么做？</a>
   - <a href="#cxaztop2">TOP 2：LiveData “数据倒灌” 是什么情况，如何解决？</a>
-  - <a href="#cxaztop3">TOP 3：逻辑为什么不在 ViewModel 中写？</a>
+  - <a href="#cxaztop3">TOP 3：UI 逻辑为什么不在 ViewModel 中写？</a>
   - <a href="#cxaztop4">TOP 4：为什么不用 LiveDataBus？</a>
   - <a href="#cxaztop5">TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？</a>
 - Jetpack MVVM 最佳实践 issue 高频 Q&A TOP 5
@@ -63,7 +65,7 @@
 
 &nbsp;
 
-### <h2 id="cxaztop3">TOP 3：逻辑为什么不在 ViewModel 中写？</h2>
+### <h2 id="cxaztop3">TOP 3：UI 逻辑为什么不在 ViewModel 中写？</h2>
 
 解答：Jetpack MVVM 主要遵循 **数据驱动** 和 **关注点分离** 这两大特性，
 
@@ -111,7 +113,7 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 
 ### <h2 id="cxaztop5">TOP 5：Navigation replace 方式返回时，怎么恢复视图状态？</h2>
 
-解答：Navigation 的 FragmentNavigator，官方写法是通过 replace 来启动新 Fragment，这可能造成返回时重绘页面等问题，对此有两种办法，一种是重写 FragmentNavigator，使之通过 show hide 来启动新 Fragment，另一种是在 onCreateView 中复用上一次实例化好的 View。
+解答：Navigation 的 FragmentNavigator，官方写法是通过 replace 来启动新 Fragment，这可能造成返回时重绘页面等问题，对此有两种办法，一种是重写 FragmentNavigator，使之通过 add hide 来启动新 Fragment，另一种是在 onCreateView 中复用上一次实例化好的 View。
 
 具体操作和注意事项可参考 [《就算不用 Jetpack Navigation，也请务必领略的声明式编程之美！》](https://xiaozhuanlan.com/topic/5860149732) 文末的详细补充，以及我和 [Flywith24](https://github.com/Flywith24) 在 [《我的碎片很听话，你的 Fragment 有自己的想法》](https://xiaozhuanlan.com/topic/0937256481) 评论区 22 楼关于 replace 方式返回时视图状态恢复的讨论。
 
@@ -148,39 +150,4 @@ bus 自身 **缺乏唯一可信源的理念约束** 以及 **难以追溯事件�
 解答：**ObservaleField 有防抖的特点**，要记住这个特点，然后根据情况选择使用。
 
 比如 PureMusic 中通知抽屉打开，用 `ObservaleField<Boolean>` 不合适，而 LiveData 合适，
-因为 ObservaleField 防抖，第一次 set true，就有 true 为 value 了，第二次再 set true，就不 notify 视图刷新了（具体见 ObservaleBoolean 的 set 方法实现）
-
-防抖可以避免重复刷新 以减少不必要的性能开销，所以看情况选择 ObservaleField 或 LiveData。
-
-更多细节内容详见 [《从 被误解 到 真香 的 Jetpack DataBinding！》](https://xiaozhuanlan.com/topic/9816742350) 文末及评论区中的补充。
-
-&nbsp;
-
-### <h2 id="zjsjtop4">TOP 4：LiveData observe 回调走了多次，该如何处理？</h2>
-
-解答：（注意此处所指的情况不同于 ”数据倒灌“）
-
-考虑到此前有多位小伙伴私下询问过 LiveData “重复回调”的问题，这里额外做个明示：
-
-LiveData 是被设计为，支持从 ViewModel、单例等唯一可信源 完成数据的一对多分发，因而其内部的观察套路 **并非 “一对一”的 观察者模式，而是 “一对多” 的 发布-订阅模式**，我在 2018 年自主设计并开源的 [VIABUS 架构](https://github.com/KunMinX/VIABUS-Architecture) 也是采取这种模式，内部通过 Map 来维护订阅者。
-
-所以正常情况下，对于 一个 LiveData 实例，在同一个页面中只该注册一次观察、请勿在 RecyclerView Adapter 的 onBindViewHolder 等处注册，避免导致重复注册多个订阅者，从而不可预期地在每次请求后 “收到多次推送”。
-
-更多完整的提示可参见 [《LiveData 鲜为人知的 身世背景 和 独特使命》](https://xiaozhuanlan.com/topic/0168753249) 文末的最新补充。
-
-&nbsp;
-
-### <h2 id="zjsjtop5">TOP 5：将《最佳实践》的 Navigation 修改版引入到自己项目，结果还是走的 replace，怎么办？</h2>
-
-解答：请移除自己项目中引入的 navigation.fragment gradle 引用，不然可能会覆盖来自 architecture module 下的那些。
-并且，请确保 navigation.fragment 被移入自己项目时，和原来 architecture module 中一样，使用完整的 com.androidX 的包名路径。
-
-&nbsp;
-
-## 版权声明
-
-本文以 [CC 署名-非商业性使用-禁止演绎 4.0 国际协议](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh) 发行。
-
-Copyright © 2019-present KunMinX
-
-![](https://user-gold-cdn.xitu.io/2020/5/22/1723c10d41f87699?w=88&h=31&f=png&s=1566)
+因为
